@@ -3,7 +3,7 @@ import unittest
 import sys
 import tempfile
 
-import posac.posac_main
+import odt_respace.odt_respace_main
 
 tests_dir = os.path.dirname(__file__)
 
@@ -21,7 +21,7 @@ class TestMain(unittest.TestCase):
         argv = [sys.argv[0],]
         sys.argv = argv
         try:
-            posac.posac_main.run()
+            odt_respace.odt_respace_main.run()
         except SystemExit as e:
             if e.code is 2:
                 return
@@ -31,9 +31,10 @@ class TestMain(unittest.TestCase):
     def testInputDoesNotExist(self):
         argv = [sys.argv[0],]
         argv.append('screwyfile.blah')
+        argv.append('notherfile.bash')
         sys.argv = argv
         try:
-            posac.posac_main.run()
+            odt_respace.odt_respace_main.run()
         except SystemExit as e:
             if e.code is 2:
                 return
@@ -47,7 +48,8 @@ class TestMain(unittest.TestCase):
                 'lorem_ipsum_oo_3.1.1_odf_1.1.odt')
         argv = [sys.argv[0],]
         argv.append(test_file)
+        argv.append('lorem_ipsum_oo_3.1.1_odf_1.1_double_spaced.odt')
         sys.argv = argv
-        posac.posac_main.run()
+        odt_respace.odt_respace_main.run()
 
 
