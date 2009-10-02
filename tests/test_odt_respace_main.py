@@ -50,12 +50,4 @@ class TestMain(unittest.TestCase):
         sys.argv = argv
         posac.posac_main.run()
 
-    def testDocxInput(self):
-# @todo finish this test
-        test_file = os.path.join(tests_dir, 'data',
-                'lorem_ipsum_ms_word_2007.docx')
-        argv = [sys.argv[0],]
-        argv.append(test_file)
-        sys.argv = argv
-        posac.posac_main.run()
 

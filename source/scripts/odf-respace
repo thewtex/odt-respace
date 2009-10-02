@@ -1,4 +1,0 @@
-#!/usr/bin/env python
-
-import posac.posac_main
-posac.posac_main.run()
