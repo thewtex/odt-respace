@@ -1,6 +1,7 @@
 import sys
 from optparse import OptionParser
 import os.path
+import shutil
 
 
 #  odt-respace to be run even if not installed or in PYTHONPATH
@@ -9,6 +10,9 @@ try:
 except ImportError:
     project_path = os.path.join(os.path.dirname(__file__), '..')
     sys.path.append(os.path.join(project_path, 'source'))
+
+from odt_respace.unzip import UnZip
+from odt_respace.respace import Respace
 
 def run():
     usage = """usage: %prog [options] INFILE OUTFILE
@@ -27,6 +31,13 @@ a Open Document Word Processing *.odt file.
         parser.error("Incorrect number of arguments; please supply file to convert from and to.")
     if not os.path.exists(args[0]):
         parser.error("Input file does not exist.")
+
+    with UnZip(args[0]) as zip_content_dir:
+        respacer = Respace(zip_content_dir)
+        with open(os.path.join(zip_content_dir, 'content.new.xml'), 'w') as newcontent:
+            newcontent.write(respacer.run())
+        os.rename(os.path.join(zip_content_dir, 'content.new.xml'),
+                os.path.join(zip_content_dir, 'content.xml'))
 
 
 if __name__ == '__main__':
