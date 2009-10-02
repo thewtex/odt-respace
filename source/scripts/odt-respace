@@ -1,4 +1,4 @@
 #!/usr/bin/env python
 
-import odf_respace.odf_respace_main
-odf_respace.odf_respace_main.run()
+import odf_respace.main
+odf_respace.main.run()

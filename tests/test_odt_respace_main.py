@@ -3,7 +3,7 @@ import unittest
 import sys
 import tempfile
 
-import odt_respace.odt_respace_main
+import odt_respace.main
 
 tests_dir = os.path.dirname(__file__)
 
@@ -21,7 +21,7 @@ class TestMain(unittest.TestCase):
         argv = [sys.argv[0],]
         sys.argv = argv
         try:
-            odt_respace.odt_respace_main.run()
+            odt_respace.main.run()
         except SystemExit as e:
             if e.code is 2:
                 return
@@ -34,7 +34,7 @@ class TestMain(unittest.TestCase):
         argv.append('notherfile.bash')
         sys.argv = argv
         try:
-            odt_respace.odt_respace_main.run()
+            odt_respace.main.run()
         except SystemExit as e:
             if e.code is 2:
                 return
@@ -50,6 +50,6 @@ class TestMain(unittest.TestCase):
         argv.append(test_file)
         argv.append('lorem_ipsum_oo_3.1.1_odf_1.1_double_spaced.odt')
         sys.argv = argv
-        odt_respace.odt_respace_main.run()
+        odt_respace.main.run()
 
 
