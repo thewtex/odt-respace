@@ -3,6 +3,7 @@ import tempfile
 from zipfile import ZipFile
 
 class UnZip():
+    """Unzip the given file into a temporary directory."""
     def __init__(self, input_file):
         self.input_file = input_file
 

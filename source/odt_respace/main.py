@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys
 from optparse import OptionParser
 import os.path
@@ -13,6 +15,7 @@ except ImportError:
 
 from odt_respace.unzip import UnZip
 from odt_respace.respace import Respace
+from odt_respace.zip import Zip
 
 def run():
     usage = """usage: %prog [options] INFILE OUTFILE
@@ -38,6 +41,8 @@ a Open Document Word Processing *.odt file.
             newcontent.write(respacer.run())
         os.rename(os.path.join(zip_content_dir, 'content.new.xml'),
                 os.path.join(zip_content_dir, 'content.xml'))
+	zipper = Zip(zip_content_dir, args[1])
+	zipper.zip()
 
 
 if __name__ == '__main__':
