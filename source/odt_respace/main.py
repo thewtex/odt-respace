@@ -41,8 +41,16 @@ a Open Document Word Processing *.odt file.
             newcontent.write(respacer.run())
         os.rename(os.path.join(zip_content_dir, 'content.new.xml'),
                 os.path.join(zip_content_dir, 'content.xml'))
-        zipper = Zip(zip_content_dir, args[1])
-        zipper.zip()
+# prevent overwriting a file that isn't closed yet
+        if args[0] == args[1]:
+            zipper = Zip(zip_content_dir, args[1] + '.temp')
+            zipper.zip()
+        else:
+            zipper = Zip(zip_content_dir, args[1])
+            zipper.zip()
+
+    if args[0] == args[1]:
+        os.rename(args[1] + '.temp', args[1])
 
 
 if __name__ == '__main__':
