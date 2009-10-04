@@ -18,16 +18,16 @@ from odt_respace.respace import Respace
 from odt_respace.zip import Zip
 
 def run():
-    usage = """usage: %prog [options] INFILE OUTFILE
+    usage = """usage: %prog INFILE OUTFILE
 
 This program changes the number of spaces between sentences from 1 to 2 in
 a Open Document Word Processing *.odt file.
     """
 
-# create parser
     parser = OptionParser(usage)
-    parser.add_option("-s", "--styles", dest="styles",
-            help="Comma delimited set of text style-names\nDefaults to 'Default'")
+# @todo?
+    #parser.add_option("-s", "--styles", dest="styles",
+            #help="Comma delimited set of text style-names\nDefaults to 'Default'")
     options, args = parser.parse_args()
 
     if len(args) != 2:
@@ -41,8 +41,8 @@ a Open Document Word Processing *.odt file.
             newcontent.write(respacer.run())
         os.rename(os.path.join(zip_content_dir, 'content.new.xml'),
                 os.path.join(zip_content_dir, 'content.xml'))
-	zipper = Zip(zip_content_dir, args[1])
-	zipper.zip()
+        zipper = Zip(zip_content_dir, args[1])
+        zipper.zip()
 
 
 if __name__ == '__main__':

@@ -43,7 +43,6 @@ class TestMain(unittest.TestCase):
 
 
     def testOdtInput(self):
-# @todo finish this test
         test_file = os.path.join(tests_dir, 'data',
                 'lorem_ipsum_oo_3.1.1_odf_1.1.odt')
         argv = [sys.argv[0],]

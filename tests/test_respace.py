@@ -26,3 +26,11 @@ class TestRespace(unittest.TestCase):
             respacer = Respace(zip_content_dir)
             respaced_content = respacer.run()
             self.assertEqual(respaced_content.count('<text:s/>'), 74)
+
+    def testRespaceDefault1_2(self):
+        test_file = os.path.join(tests_dir, 'data',
+                'lorem_ipsum_oo_3.1.1_odf_1.2.odt')
+        with UnZip(test_file) as zip_content_dir:
+            respacer = Respace(zip_content_dir)
+            respaced_content = respacer.run()
+            self.assertEqual(respaced_content.count('<text:s/>'), 74)
