@@ -15,7 +15,7 @@ class Respace():
         with open(os.path.join(self.odt_dir, 'content.xml'), 'r') as file:
             content = file.read()
 
-            respaced_content = re.sub(r'\.((?:“|”|"|&apos;|\')\s+|\s+)(?=(?:“|”|"|&apos;|\')\S|\S)',
+            respaced_content = re.sub(r'\.((?:“|”|"|\)|&apos;|\')\s+|\s+)(?=(?:“|”|"|\(|&apos;|\')\S|\S)',
                 r'.\1<text:s/>',
                 content)
 
